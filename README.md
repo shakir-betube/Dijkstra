@@ -1,2 +1,3 @@
-# Dijkstra
-Dijkstra algoritham
+# Dijkstra algoritham
+
+it is an commandline app
