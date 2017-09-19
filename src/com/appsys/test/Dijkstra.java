@@ -15,26 +15,27 @@ class Dijkstra {
 
 
     void loadFile(String filename) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        String line = br.readLine();
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line = br.readLine();
 
-        String[] parts = line.split(" ");
-        g_nodes = Integer.parseInt(parts[0]);
-        int edges = Integer.parseInt(parts[1]);
+            String[] parts = line.split(" ");
+            g_nodes = Integer.parseInt(parts[0]);
+            int edges = Integer.parseInt(parts[1]);
 
-        g_from = new int[edges];
-        g_to = new int[edges];
-        g_weight = new int[edges];
+            g_from = new int[edges];
+            g_to = new int[edges];
+            g_weight = new int[edges];
 
-        int i = 0;
-        while ((line = br.readLine()) != null) {
+            int i = 0;
+            while ((line = br.readLine()) != null) {
 
-            parts = line.split(" ");
-            g_from[i] = Integer.parseInt(parts[0]);
-            g_to[i] = Integer.parseInt(parts[1]);
-            g_weight[i] = Integer.parseInt(parts[2]);
+                parts = line.split(" ");
+                g_from[i] = Integer.parseInt(parts[0]);
+                g_to[i] = Integer.parseInt(parts[1]);
+                g_weight[i] = Integer.parseInt(parts[2]);
 
-            i++;
+                i++;
+            }
         }
     }
 
@@ -79,7 +80,7 @@ class Dijkstra {
             }
         }
 
-        return (qm == null) ? 0 : qm.weight ;
+        return (qm == null) ? 0 : qm.weight;
     }
 
     private void computeCost() {
